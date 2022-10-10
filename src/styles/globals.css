@@ -24,3 +24,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.miss {
+  animation: miss-animation 1000ms ease;
+}
+
+@keyframes miss-animation {
+  to {
+      color: #fff;
+      background-color: transparent;
+  }
+
+  from {
+      color: #fff;
+      background-color: red;    
+  }
+}

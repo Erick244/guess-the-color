@@ -17,6 +17,7 @@ export default function GuessTheColor() {
     const [correctColor, setCorrectColor] = useState('');
     const [notColor1, setNotColor1] = useState('');
     const [notColor2, setNotColor2] = useState('');
+    const [miss, setMiss] = useState(false);
 
 
     function setAllState() {
@@ -32,11 +33,7 @@ export default function GuessTheColor() {
 
 
     function positionsGenerate() {
-        function generateValue() {
-            let value = Math.floor(Math.random() * 3);
-            return value;
-        }
-
+        const generateValue = () => Math.floor(Math.random() * 3);
         let randomPositions = [];
 
         for (let i; randomPositions.length < 3; i++) {
@@ -61,7 +58,10 @@ export default function GuessTheColor() {
         if (labelButton === correctColor) {
             setAllState();
         } else {
-            return 1
+            button.classList.add('miss');
+            setTimeout(() => {
+                button.classList.remove('miss');
+            }, 1010);
         }
     }
 
@@ -70,9 +70,9 @@ export default function GuessTheColor() {
         <div>
             <Color color={correctColor} />
             <div>
-                <Button option={options[positions[0]]} click={check} />
-                <Button option={options[positions[1]]} click={check} />
-                <Button option={options[positions[2]]} click={check} />
+                <Button option={options[positions[0]]} click={check}/>
+                <Button option={options[positions[1]]} click={check}/>
+                <Button option={options[positions[2]]} click={check}/>
             </div>
         </div>
     )
